@@ -51,12 +51,12 @@
                                             <tr>
 
                                                 <th scope="col">Nom</th>
-                                                <th scope="col">Prenom</th>
+                                                <th scope="col">Prénom</th>
                                                 <th scope="col">Âge</th>
                                                 <th scope="col">Téléphone</th>
                                                 <th scope="col">Profession</th>
                                                 <th scope="col">Adresse</th>
-                                                <th scope="col">Date</th>
+                                                <th scope="col">Dâte</th>
                                                 <th scope="col">Dent</th>
                                                 <th scope="col">Traitement</th>
                                                 <th colspan="2">Actions</th>

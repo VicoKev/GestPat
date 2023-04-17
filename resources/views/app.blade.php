@@ -4,7 +4,7 @@
 
     <!-- Begin page -->
     <div id="layout-wrapper">
-
+        <div class="header-border"></div>
         @include('partials.header')
 
         <!-- ========== Left Sidebar Start ========== -->

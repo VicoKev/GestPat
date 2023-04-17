@@ -39,8 +39,8 @@
                                             {{-- <input type="hidden" name="token" value="{{ $token }}">  --}}
 
                                             <div class="form-group">
-                                                
-                                                <input type="email" class="form-control form-control-user @error('email') is-invalid @enderror" id="email" name="email" placeholder="Votre email..." value="{{ old('email') }}" required autocomplete="off">
+                                                <label for="email">{{ __('Email') }}</label>
+                                                <input type="email" class="form-control form-control-user @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email') }}" required autocomplete="off">
                                                 @error('email')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>

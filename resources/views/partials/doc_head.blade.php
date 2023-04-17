@@ -23,3 +23,16 @@
     <link href="{{ asset('assets/css/theme.min.css') }}" rel="stylesheet" type="text/css" />
 
 </head>
+
+<style>
+    .profile-image {
+  border-radius: 50%;
+  background-color: #ccc;
+  color: #fff;
+  font-size: 24px;
+  text-align: center;
+  width: 40px;
+  height: 40px;
+  line-height: 38px;
+}
+</style>

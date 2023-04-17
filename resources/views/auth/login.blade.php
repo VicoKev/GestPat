@@ -35,10 +35,11 @@
                                         <form action="{{ route('login') }}" method="POST" class="user">
                                             @csrf
                                             <div class="form-group">
+                                                <label for="email">{{ __('Email') }}</label>
                                                 <input type="email"
                                                     class="form-control form-control-user @error('email') is-invalid @enderror"
                                                     value="{{ old('email') }}" id="email" name="email"
-                                                    placeholder="Votre email..." required autocomplete="off"
+                                                     required autocomplete="off"
                                                     autofocus>
                                                 @error('email')
                                                     <span class="invalid-feedback" role="alert">
@@ -47,15 +48,18 @@
                                                 @enderror
                                             </div>
                                             <div class="form-group">
-                                                <input type="password"
-                                                    class="form-control form-control-user @error('password') is-invalid @enderror"
-                                                    id="password" name="password" placeholder="Votre mot de passe..."
-                                                    required autocomplete="off">
-                                                @error('password')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
+                                                <label for="password">{{ __('Mot de passe') }}</label>
+                                                <div class="input-group" id="show_hide_password">
+                                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="off">
+                                                    <div class="input-group-append">
+                                                        <span class="input-group-text"><a href=""><i class="fas fa-eye-slash" aria-hidden="true"></i></a></span>
+                                                    </div>
+                                                    @error('password')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
                                             </div>
                                             <button type="submit"
                                                 class="btn btn-success btn-block waves-effect waves-light">{{ __('Se connecter') }}</button>
@@ -88,6 +92,23 @@
 
 
     @include('partials.doc_down')
+
+    <script>
+        $(document).ready(function() {
+            $("#show_hide_password a").on('click', function(event) {
+                event.preventDefault();
+                if($('#password').attr("type") == "text"){
+                    $('#password').attr('type', 'password');
+                    $('#show_hide_password a i').addClass( "fa-eye-slash" );
+                    $('#show_hide_password a i').removeClass( "fa-eye" );
+                }else if($('#password').attr("type") == "password"){
+                    $('#password').attr('type', 'text');
+                    $('#show_hide_password a i').removeClass( "fa-eye-slash" );
+                    $('#show_hide_password a i').addClass( "fa-eye" );
+                }
+            });
+        });
+    </script>
 
 </body>
 
