@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 class PatientController extends Controller
 {
-    public function liste_patient()
+    public function list_patient()
     {
         // Récupérer l'utilisateur connecté
         $user = Auth::user();

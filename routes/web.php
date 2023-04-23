@@ -26,7 +26,7 @@ Route::get('/', function () { return view('welcome'); })->name('welcome');
 Route::middleware(['auth'])->group(function () {
     Route::get('/add-patient', [PatientController::class, 'add_patient'])->name('add');
     Route::post('/add-request', [PatientController::class, 'add_request'])->name('add-request');
-    Route::get('/list-patient', [PatientController::class, 'liste_patient'])->name('list');
+    Route::get('/list-patient', [PatientController::class, 'list_patient'])->name('list');
     Route::get('/update-patient/{id}', [PatientController::class, 'update_patient'])->name('update');
     Route::post('/update-request', [PatientController::class, 'update_request'])->name('update-request');
     Route::get('/delete-patient/{id}', [PatientController::class, 'delete_request'])->name('delete-request');
