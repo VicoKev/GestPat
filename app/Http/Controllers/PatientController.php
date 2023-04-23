@@ -14,7 +14,7 @@ class PatientController extends Controller
         $user = Auth::user();
 
         // Récupérer tous les patients créés par l'utilisateur connecté et les paginer par trois éléments
-        $patients = Patient::where('user_id', $user->id)->paginate(5);
+        $patients = Patient::where('user_id', $user->id)->paginate(6);
 
         return view('layouts.patients.list', compact('patients'));
     }
@@ -127,31 +127,67 @@ class PatientController extends Controller
         })
             ->whereHas('user', function ($query) use ($user) {
                 $query->where('id', $user->id);
-            })->paginate(5);
+            })->paginate(6);
 
         // Boucler sur les patients trouvés et les ajouter à la variable de sortie
         if ($patients->count() > 0) {
             foreach ($patients as $patient) {
-                $output .= '<tr>' .
-                    '<td>' . $patient->nom . '</td>' .
-                    '<td>' . $patient->prenom . '</td>' .
-                    '<td>' . $patient->age . '</td>' .
-                    '<td>' . $patient->telephone . '</td>' .
-                    '<td>' . $patient->profession . '</td>' .
-                    '<td>' . $patient->adresse . '</td>' .
-                    '<td>' . $patient->date . '</td>' .
-                    '<td>' . $patient->dent . '</td>' .
-                    '<td>' . $patient->traitement . '</td>' .
-                    '<td><a href="/update-patient/' . $patient->id . '" class="btn btn-secondary"><i class="mdi mdi-pencil-outline"></i></a></td>' .
-                    '<td><a href="/delete-patient/' . $patient->id . '" class="btn btn-danger"><i class="mdi mdi-trash-can-outline"></i></a></td>' .
-                    '</tr>';
+                $output .= '<tr>';
+                $output .= '<td class="align-middle patient-name p-2">' . $patient->nom . ' 
+                    <button type="button" class="btn btn-primary btn-sm float-right d-sm-block d-md-none collapse-btn" data-toggle="collapse" 
+                    data-target="#patient' . $patient->id . '" aria-expanded="false" 
+                    aria-controls="patient' . $patient->id . '">
+                                <i class="fa fa-plus"></i>
+                            </button>
+                        </td>
+                        <td class="d-none d-md-table-cell p-2">' . $patient->prenom . '</td>
+                        <td class="d-none d-md-table-cell p-2">' . $patient->age . '</td>
+                        <td class="d-none d-md-table-cell p-2">' . $patient->telephone . '</td>
+                        <td class="d-none d-md-table-cell p-2">' . $patient->profession . '</td>
+                        <td class="d-none d-md-table-cell p-2">' . $patient->adresse . '</td>
+                        <td class="d-none d-md-table-cell p-2">' . $patient->date . '</td>
+                        <td class="d-none d-md-table-cell p-2">' . $patient->dent . '</td>
+                        <td class="d-none d-md-table-cell p-2">' . $patient->traitement . '</td>
+                        <td class="d-none d-md-table-cell">
+                            <a href="' . route('update', $patient->id) . '" class="btn btn-secondary"><i
+                                    class="mdi mdi-pencil-outline"></i></a>
+                        </td>
+                        <td class="d-none d-md-table-cell">
+                            <a href="' . route('delete-request', $patient->id) . '" class="btn btn-danger btn-delete"><i
+                                    class="mdi mdi-trash-can-outline"></i></a>
+                        </td>
+                    </tr>
+                    <tr id="patient' . $patient->id . '" class="collapse">
+                        <td colspan="12">
+                            <div class="card-deck">
+                                <div class="card px-2">
+                                    <p><strong>Prénom :</strong> ' . $patient->prenom . '</p>
+                                    <p><strong>Âge :</strong> ' . $patient->age . '</p>
+                                    <p><strong>Téléphone :</strong> ' . $patient->telephone . '</p>
+                                    <p><strong>Profession :</strong> ' . $patient->profession . '</p>
+                                    <p><strong>Adresse :</strong> ' . $patient->adresse . '</p>
+                                    <p><strong>Date :</strong> ' . $patient->date . '</p>
+                                    <p><strong>Dent :</strong> ' . $patient->dent . '</p>
+                                    <p><strong>Traitement :</strong> ' . $patient->traitement . '</p>
+                                    <p><strong>Actions :</strong>
+                                        <a href="' . route('update', $patient->id) . '" class="btn btn-secondary"><i
+                                                class="mdi mdi-pencil-outline"></i></a>
+                                        <a href="' . route('delete-request', $patient->id) . '" class="btn btn-danger btn-delete"><i
+                                                class="mdi mdi-trash-can-outline"></i></a>
+                                    </p>
+                                </div>                           
+                            </div>
+                        </td>
+                    </tr>';
             }
         } else {
-            $output .= '<tr>' .
-                '<td align="center" colspan="11"><strong style="color:red">Aucun patient trouvé !</strong></td>' .
-                '</tr>';
+            $output .= '<tr>
+                            <td align="center" colspan="11"><strong style="color:red">Aucun patient trouvé !</strong></td>
+                        </tr>';
         }
 
-        return response($output);
+        // Retourner la réponse au format JSON
+        return response($output);       
     }
 }
+

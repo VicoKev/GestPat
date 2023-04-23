@@ -24,7 +24,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <div class="container-fluid text-center">
+                    <div class="container-fluid">
                         <div class="row justify-content-center">
                             <div class="col-md-12">
                                 @if (session('status'))
@@ -45,47 +45,68 @@
                                 </div>
                                 
                                 <hr>
-                                <div class="table-responsive col-sm-12">
+                                <div class="col-sm-12">
                                     <table class="table table-hover">
                                         <thead>
                                             <tr>
-
                                                 <th scope="col">Nom</th>
-                                                <th scope="col">Prénom</th>
-                                                <th scope="col">Âge</th>
-                                                <th scope="col">Téléphone</th>
-                                                <th scope="col">Profession</th>
-                                                <th scope="col">Adresse</th>
-                                                <th scope="col">Dâte</th>
-                                                <th scope="col">Dent</th>
-                                                <th scope="col">Traitement</th>
-                                                <th colspan="2">Actions</th>
+                                                <th class="d-none d-md-table-cell" scope="col">Prénom</th>
+                                                <th class="d-none d-md-table-cell" scope="col">Âge</th>
+                                                <th class="d-none d-md-table-cell" scope="col">Téléphone</th>
+                                                <th class="d-none d-md-table-cell" scope="col">Profession</th>
+                                                <th class="d-none d-md-table-cell" scope="col">Adresse</th>
+                                                <th class="d-none d-md-table-cell" scope="col">Date</th>
+                                                <th class="d-none d-md-table-cell" scope="col">Dent</th>
+                                                <th class="d-none d-md-table-cell" scope="col">Traitement</th>
+                                                <th class="d-none d-md-table-cell" colspan="2">Actions</th>
                                             </tr>
                                         </thead>
                                         <tbody class="alldata">
                                             @foreach ($patients as $patient)
                                                 <tr>
-
-                                                    <td>{{ $patient->nom }}</td>
-                                                    <td>{{ $patient->prenom }}</td>
-                                                    <td>{{ $patient->age }}</td>
-                                                    <td>{{ $patient->telephone }}</td>
-                                                    <td>{{ $patient->profession }}</td>
-                                                    <td>{{ $patient->adresse }}</td>
-                                                    <td>{{ $patient->date }}</td>
-                                                    <td>{{ $patient->dent }}</td>
-                                                    <td>{{ $patient->traitement }}</td>
-                                                    <td>
-                                                        <a href="{{ route('update', $patient->id) }}"
-                                                            class="btn btn-secondary"><i
+                                                    <td class="align-middle patient-name p-2">{{ $patient->nom }} 
+                                                        <button type="button" class="btn btn-primary btn-sm float-right d-sm-block d-md-none collapse-btn" data-toggle="collapse" 
+                                                        data-target="#patient{{ $patient->id }}" aria-expanded="false" 
+                                                        aria-controls="patient{{ $patient->id }}">
+                                                            <i class="fa fa-plus"></i>
+                                                        </button>
+                                                    </td>
+                                                    <td class="d-none d-md-table-cell p-2">{{ $patient->prenom }}</td>
+                                                    <td class="d-none d-md-table-cell p-2">{{ $patient->age }}</td>
+                                                    <td class="d-none d-md-table-cell p-2">{{ $patient->telephone }}</td>
+                                                    <td class="d-none d-md-table-cell p-2">{{ $patient->profession }}</td>
+                                                    <td class="d-none d-md-table-cell p-2">{{ $patient->adresse }}</td>
+                                                    <td class="d-none d-md-table-cell p-2">{{ $patient->date }}</td>
+                                                    <td class="d-none d-md-table-cell p-2">{{ $patient->dent }}</td>
+                                                    <td class="d-none d-md-table-cell p-2">{{ $patient->traitement }}</td>
+                                                    
+                                                    <td class="d-none d-md-table-cell">
+                                                        <a href="{{ route('update', $patient->id) }}" class="btn btn-primary"><i
                                                                 class="mdi mdi-pencil-outline"></i></a>
                                                     </td>
-                                                    <td>
-                                                        <a href="{{ route('delete-request', $patient->id) }}"
-                                                            class="btn btn-danger btn-delete"><i
+                                                    <td class="d-none d-md-table-cell">
+                                                        <a href="{{ route('delete-request', $patient->id) }}" class="btn btn-danger btn-delete"><i
                                                                 class="mdi mdi-trash-can-outline"></i></a>
-
-
+                                                    </td>
+                                                </tr>
+                                                <tr id="patient{{ $patient->id }}" class="collapse">
+                                                    <td colspan="12">
+                                                        <div class="card-deck">
+                                                            <div class="card px-2">
+                                                                <p><strong>Prénom :</strong> {{ $patient->prenom }}</p>
+                                                                <p><strong>Âge :</strong> {{ $patient->age }}</p>
+                                                                <p><strong>Téléphone :</strong> {{ $patient->telephone }}</p>
+                                                                <p><strong>Profession :</strong> {{ $patient->profession }}</p>
+                                                                <p><strong>Adresse :</strong> {{ $patient->adresse }}</p>
+                                                                <p><strong>Date :</strong> {{ $patient->date }}</p>
+                                                                <p><strong>Dent :</strong> {{ $patient->dent }}</p>
+                                                                <p><strong>Traitement :</strong> {{ $patient->traitement }}</p>
+                                                                <p><strong>Actions :</strong> <a href="{{ route('update', $patient->id) }}" class="btn btn-primary"><i
+                                                                    class="mdi mdi-pencil-outline"></i></a> <a href="{{ route('delete-request', $patient->id) }}" class="btn btn-danger btn-delete"><i
+                                                                    class="mdi mdi-trash-can-outline"></i></a>
+                                                                </p>                                                             
+                                                            </div>
+                                                        </div>
                                                     </td>
                                                 </tr>
                                             @endforeach
@@ -94,8 +115,20 @@
                                         <tbody id="content" class="searchdata"></tbody>
                                     </table>
 
+                                    <style>                                     
+                                        @media (max-width: 768px) {
+                                            .table-responsive {
+                                                overflow-x: auto;
+                                            }
+                                            
+                                            .table td,
+                                            .table th {
+                                                white-space: nowrap;
+                                            }
+                                        }
+                                    </style>
+                                    
                                     {{ $patients->links() }}
-
 
                                 </div>
                             </div>
@@ -121,6 +154,7 @@
                 text: "Cette action est irréversible !",
                 icon: "warning",
                 showCancelButton: true,
+                confirmButtonColor: '#f85359',
                 confirmButtonText: "Oui, supprimer",
                 cancelButtonText: "Annuler"
             }).then((result) => {
@@ -136,7 +170,7 @@
             });
         });
 
-
+        
         // Recherche en temps réel des patients avec Ajax
         $('#search').on('keyup', function() {
             $value = $(this).val();
