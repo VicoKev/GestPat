@@ -13,7 +13,7 @@ GestPat is a virtual patient manager that allows dentists to easily handle their
 
 Before installing and running the GestPat application, make sure you have the following:
 
-- PHP 7.4 or higher
+- PHP 8.1 or higher
 - Composer (for dependency installation)
 - Web server (e.g., Apache, Nginx)
 - Database management system (DBMS) such as MySQL, PostgreSQL
@@ -23,7 +23,7 @@ Before installing and running the GestPat application, make sure you have the fo
 1. Clone this code repository to your local machine:
 
    ```bash
-   git clone https://github.com/your-username/gestpat.git
+   git clone https://github.com/VicoKev/gestpat.git
    
 2. Navigate to the project directory:
 
