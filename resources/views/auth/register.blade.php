@@ -55,7 +55,7 @@
                                                 <div class="input-group" id="show_hide_password">
                                                     <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="off">
                                                     <div class="input-group-append">
-                                                        <span class="input-group-text"><a href=""><i class="fas fa-eye-slash" aria-hidden="true"></i></a></span>
+                                                        <button class="btn btn-outline-success" type="button"><i class="fa fa-eye-slash" aria-hidden="true"></i></button>
                                                     </div>
                                                     @error('password')
                                                         <span class="invalid-feedback" role="alert">
@@ -70,7 +70,7 @@
                                                 <div class="input-group" id="show_hide_password_confirm">
                                                     <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="off">
                                                     <div class="input-group-append">
-                                                        <span class="input-group-text"><a href=""><i class="fas fa-eye-slash" aria-hidden="true"></i></a></span>
+                                                        <button class="btn btn-outline-success" type="button"><i class="fa fa-eye-slash" aria-hidden="true"></i></button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -105,34 +105,34 @@
 
     @include('partials.doc_down')
 
-<script>
-    $(document).ready(function() {
-        $("#show_hide_password a").on('click', function(event) {
-            event.preventDefault();
-            if($('#password').attr("type") == "text"){
-                $('#password').attr('type', 'password');
-                $('#show_hide_password a i').addClass( "fa-eye-slash" );
-                $('#show_hide_password a i').removeClass( "fa-eye" );
-            }else if($('#password').attr("type") == "password"){
-                $('#password').attr('type', 'text');
-                $('#show_hide_password a i').removeClass( "fa-eye-slash" );
-                $('#show_hide_password a i').addClass( "fa-eye" );
-            }
+    <script>
+        $(document).ready(function() {
+            $("#show_hide_password button").on('click', function(event) {
+                event.preventDefault();
+                if($('#password').attr("type") == "text"){
+                    $('#password').attr('type', 'password');
+                    $('#show_hide_password button i').addClass( "fa-eye-slash" );
+                    $('#show_hide_password button i').removeClass( "fa-eye" );
+                }else if($('#password').attr("type") == "password"){
+                    $('#password').attr('type', 'text');
+                    $('#show_hide_password button i').removeClass( "fa-eye-slash" );
+                    $('#show_hide_password button i').addClass( "fa-eye" );
+                }
+            });
+        
+            $("#show_hide_password_confirm button").on('click', function(event) {
+                event.preventDefault();
+                if($('#password-confirm').attr("type") == "text"){
+                    $('#password-confirm').attr('type', 'password');
+                    $('#show_hide_password_confirm button i').addClass( "fa-eye-slash" );
+                    $('#show_hide_password_confirm button i').removeClass( "fa-eye" );
+                }else if($('#password-confirm').attr("type") == "password"){
+                    $('#password-confirm').attr('type', 'text');
+                    $('#show_hide_password_confirm button i').removeClass( "fa-eye-slash" );
+                    $('#show_hide_password_confirm button i').addClass( "fa-eye" );
+                }
+            });
         });
-    
-        $("#show_hide_password_confirm a").on('click', function(event) {
-            event.preventDefault();
-            if($('#password-confirm').attr("type") == "text"){
-                $('#password-confirm').attr('type', 'password');
-                $('#show_hide_password_confirm a i').addClass( "fa-eye-slash" );
-                $('#show_hide_password_confirm a i').removeClass( "fa-eye" );
-            }else if($('#password-confirm').attr("type") == "password"){
-                $('#password-confirm').attr('type', 'text');
-                $('#show_hide_password_confirm a i').removeClass( "fa-eye-slash" );
-                $('#show_hide_password_confirm a i').addClass( "fa-eye" );
-            }
-        });
-    });
     </script>
     
 

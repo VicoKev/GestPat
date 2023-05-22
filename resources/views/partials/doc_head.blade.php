@@ -5,7 +5,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="description" content="GestPat est un gestionnaire virtuel de patients qui vous permet de renseigner les informations de vos patients, d'accéder plus facilement aux données relatives à vos patients, d'optimiser la gestion de vos patients">
+    <meta name="keywords" content="gestionnaire, patients, gestion, patient, gestionnaire de patients, gestionnaire virtuel de patients, gestionnaire de patients virtuel, gestionnaire de patients en ligne, gestionnaire de patients gratuit, gestionnaire de patients en ligne gratuit, gestionnaire de patients en ligne gratuit en français, gestionnaire de patients en ligne gratuit en français">
+    <meta name="author" content="VicoKev">
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
@@ -23,16 +30,3 @@
     <link href="{{ asset('assets/css/theme.min.css') }}" rel="stylesheet" type="text/css" />
 
 </head>
-
-<style>
-    .profile-image {
-  border-radius: 50%;
-  background-color: #ccc;
-  color: #fff;
-  font-size: 24px;
-  text-align: center;
-  width: 40px;
-  height: 40px;
-  line-height: 38px;
-}
-</style>

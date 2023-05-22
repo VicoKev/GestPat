@@ -52,7 +52,7 @@
                                                 <div class="input-group" id="show_hide_password">
                                                     <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="off">
                                                     <div class="input-group-append">
-                                                        <span class="input-group-text"><a href=""><i class="fas fa-eye-slash" aria-hidden="true"></i></a></span>
+                                                        <button class="btn btn-outline-success" type="button"><i class="fa fa-eye-slash" aria-hidden="true"></i></button>
                                                     </div>
                                                     @error('password')
                                                         <span class="invalid-feedback" role="alert">
@@ -95,16 +95,16 @@
 
     <script>
         $(document).ready(function() {
-            $("#show_hide_password a").on('click', function(event) {
+            $("#show_hide_password button").on('click', function(event) {
                 event.preventDefault();
                 if($('#password').attr("type") == "text"){
                     $('#password').attr('type', 'password');
-                    $('#show_hide_password a i').addClass( "fa-eye-slash" );
-                    $('#show_hide_password a i').removeClass( "fa-eye" );
+                    $('#show_hide_password button i').addClass( "fa-eye-slash" );
+                    $('#show_hide_password button i').removeClass( "fa-eye" );
                 }else if($('#password').attr("type") == "password"){
                     $('#password').attr('type', 'text');
-                    $('#show_hide_password a i').removeClass( "fa-eye-slash" );
-                    $('#show_hide_password a i').addClass( "fa-eye" );
+                    $('#show_hide_password button i').removeClass( "fa-eye-slash" );
+                    $('#show_hide_password button i').addClass( "fa-eye" );
                 }
             });
         });

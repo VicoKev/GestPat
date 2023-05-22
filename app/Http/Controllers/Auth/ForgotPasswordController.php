@@ -59,7 +59,7 @@ class ForgotPasswordController extends Controller
 
     return $status === Password::PASSWORD_RESET
                 ? redirect()->route('login')->with('status', 'Votre mot de passe a été réinitialisé avec succès !')
-                : back()->withErrors(['email' => [__($status)]]);
+                : back()->withErrors(['email' => 'Erreur lors de la réinitialisation du mot de passe !']);
 }
 
 }

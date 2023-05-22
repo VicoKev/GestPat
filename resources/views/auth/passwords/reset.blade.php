@@ -39,22 +39,7 @@
                                             @csrf
 
                                             <input type="hidden" name="token" value="{{ $token }}">
-                                            
-                                            <div class="form-group row">
-                                                <div class="col-sm-12 mb-sm-0">
-                                                    <label for="name">{{ __('Nom d\'utilisateur') }}</label>
-                                                    <input type="text"
-                                                        class="form-control form-control-user @error('name') is-invalid @enderror"
-                                                        id="name" name="name"
-                                                        value="{{ old('name') }}" required autocomplete="off"
-                                                        autofocus>
-                                                    @error('name')
-                                                        <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $message }}</strong>
-                                                        </span>
-                                                    @enderror
-                                                </div>
-                                            </div>
+                                                          
                                             <div class="form-group">
                                                 <label for="email">{{ __('Email') }}</label>
                                                 <input type="email"
@@ -73,7 +58,7 @@
                                                 <div class="input-group" id="show_hide_password">
                                                     <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="off">
                                                     <div class="input-group-append">
-                                                        <span class="input-group-text"><a href=""><i class="fas fa-eye-slash" aria-hidden="true"></i></a></span>
+                                                        <button class="btn btn-outline-success" type="button"><i class="fa fa-eye-slash" aria-hidden="true"></i></button>
                                                     </div>
                                                     @error('password')
                                                         <span class="invalid-feedback" role="alert">
@@ -88,7 +73,7 @@
                                                 <div class="input-group" id="show_hide_password_confirm">
                                                     <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="off">
                                                     <div class="input-group-append">
-                                                        <span class="input-group-text"><a href=""><i class="fas fa-eye-slash" aria-hidden="true"></i></a></span>
+                                                        <button class="btn btn-outline-success" type="button"><i class="fa fa-eye-slash" aria-hidden="true"></i></button>
                                                     </div>
                                                 </div>
                                             </div>
